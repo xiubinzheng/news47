@@ -13,6 +13,8 @@ var users = require('./routes/users');
 var session = require('./routes/sessions');
 var sharedNews = require('./routes/sharedNews');
 */
+
+// securing the application by use the trust proxy
 var app =  express();
 app.enable('trust proxy');
 
@@ -46,3 +48,10 @@ var server = app.listen(app.get('port'),function(){
     console.log('Server listening on port: '+server.address().port);
 });
 
+app.use(responseTime());
+app.use(logger('dev'));
+
+app.unsubscribe(bodyParser.json({limit: '100kb'}));
+app.use(express.static(path.join(__dirname,'static')));
+
+var node2 = cp.fork('./worker/app_FORK.js',[],{exeArgv:['--debug=5859']});
