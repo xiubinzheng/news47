@@ -25,7 +25,10 @@ var globalNewsDoc;
 // MongoDB database connection initialization
 //
 var db = {};
+
+console.log("config xxxxxxxxx: "+JSON.stringify(config));
 MongoClient.connect(config.MONGODB_CONNECT_URL, function (err, dbConn) {
+    console.log("xxxxxxxxxxxxxxxxxxxxxxxxx: "+config.MONGODB_CONNECT_URL);
     assert.equal(null, err);
     db.dbConnection = dbConn;
     db.collection = dbConn.collection('newswatcher');

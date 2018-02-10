@@ -7,12 +7,11 @@ var responseTime = require('response-time'); // performance logging
 var helmet = require('helmet');
 var RateLimit = require('express-rate-limit');
 
-/*
 var config = require('./config');
-var users = require('./routes/users');
-var session = require('./routes/sessions');
-var sharedNews = require('./routes/sharedNews');
-*/
+//var users = require('./routes/users');
+//var session = require('./routes/sessions');
+//var sharedNews = require('./routes/sharedNews');
+
 
 // securing the application by use the trust proxy
 var app =  express();
